@@ -1,0 +1,47 @@
+<h1>Editing album</h1>
+
+<%= form_for @album, :html => {:multipart => true} do |f| %>
+  <% if @album.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
+
+      <ul>
+      <% @album.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>: <%= @album.name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= @album.description %>
+  </div>
+
+  <fieldset>
+    <legend>Fotos</legend>
+    <% if @album.photos.empty? %>
+      Sem fotos...
+    <% end %>
+    <% f.fields_for :photos do |builder| %>
+      <div class="field" style="float:left; margin-left:5px;">
+        <%= image_tag builder.object.image.small.url %>
+        <br />
+        <%= link_to_remove_fields "Remover", builder %>
+      </div>
+    <% end %>
+    <div style="clear:both;"></div>
+    <%= link_to_add_fields "Adicionar", f, :photos %>
+  </fieldset>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @album %> |
+<%= link_to 'Back', albums_path %>
+

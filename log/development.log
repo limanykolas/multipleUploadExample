@@ -1,0 +1,2053 @@
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (108.6ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (292.0ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAlbums (20110118205306)
+  [1m[35mSQL (226.9ms)[0m  CREATE TABLE `albums` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (51.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110118205306')[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `albums`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `albums`
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 19:02:30 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.5ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 87ms (Views: 10.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:02:33 -0200
+  Processing by AlbumsController#new as HTML
+Rendered albums/_form.html.erb (48.6ms)
+Rendered albums/new.html.erb within layouts/application (55.5ms)
+Completed 200 OK in 115ms (Views: 61.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:27:39 -0200
+  Processing by AlbumsController#new as HTML
+Rendered albums/new.html.erb within layouts/application (73.7ms)
+Completed   in 139ms
+
+ActionView::Template::Error (/home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/models/photo.rb:3: syntax error, unexpected tCONSTANT, expecting keyword_end):
+    22:     <%= f.text_area :description %>
+    23:   </div>
+    24: 
+    25:   <% f.fields_for :photos do |builder| %>
+    26:     <div class="field">
+    27:       <%= builder.file_field :image %>
+    28:       <%= builder.hidden_field "default", :value => "true", :class => "album_photo_default" %>
+  app/views/albums/new.html.erb:25:in `block in _app_views_albums_new_html_erb___782680246_85599230_209192155'
+  app/views/albums/new.html.erb:3:in `_app_views_albums_new_html_erb___782680246_85599230_209192155'
+  app/controllers/albums_controller.rb:29:in `new'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.3ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:29:30 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb___782680246_87637830_209192155 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/new.html.erb within layouts/application (73.2ms)
+Completed   in 96ms
+
+ActionView::Template::Error (Table 'multipleUploadExample_development.photos' doesn't exist):
+    29:       <input type="radio" name="_default" onclick="mark_default(this)" checked />
+    30:     </div>
+    31:   <% end %>
+    32:   <%= link_to_add_fields "Adicionar", f, :photos %>
+    33: 
+    34:   <div class="actions">
+    35:     <%= f.submit %>
+  app/helpers/application_helper.rb:7:in `new'
+  app/helpers/application_helper.rb:7:in `link_to_add_fields'
+  app/views/albums/new.html.erb:32:in `block in _app_views_albums_new_html_erb___782680246_87637830_209192155'
+  app/views/albums/new.html.erb:3:in `_app_views_albums_new_html_erb___782680246_87637830_209192155'
+  app/controllers/albums_controller.rb:29:in `new'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.8ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.1ms)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAlbums (20110118205306)
+Migrating to CreatePhotos (20110118210556)
+  [1m[35mSQL (139.3ms)[0m  CREATE TABLE `photos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `default` tinyint(1), `album_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (59.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110118210556')[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `albums`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `albums`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `photos`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `photos`
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:30:51 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb___782680246_87912480_209192155 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/new.html.erb within layouts/application (53.1ms)
+Completed   in 82ms
+
+ActionView::Template::Error (Missing partial albums/photo_fields with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views"):
+    29:       <input type="radio" name="_default" onclick="mark_default(this)" checked />
+    30:     </div>
+    31:   <% end %>
+    32:   <%= link_to_add_fields "Adicionar", f, :photos %>
+    33: 
+    34:   <div class="actions">
+    35:     <%= f.submit %>
+  app/helpers/application_helper.rb:9:in `block in link_to_add_fields'
+  app/helpers/application_helper.rb:8:in `link_to_add_fields'
+  app/views/albums/new.html.erb:32:in `block in _app_views_albums_new_html_erb___782680246_87912480_209192155'
+  app/views/albums/new.html.erb:3:in `_app_views_albums_new_html_erb___782680246_87912480_209192155'
+  app/controllers/albums_controller.rb:29:in `new'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.7ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.1ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:33:15 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb___782680246_88179310_209192155 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (0.9ms)
+Rendered albums/new.html.erb within layouts/application (55.2ms)
+Completed 200 OK in 82ms (Views: 61.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:33:36 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb___782680246_88768460_209192155 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (1.1ms)
+Rendered albums/new.html.erb within layouts/application (60.3ms)
+Completed 200 OK in 82ms (Views: 67.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:34:51 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb___782680246_88994460_209192155 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (0.9ms)
+Rendered albums/new.html.erb within layouts/application (55.0ms)
+Completed 200 OK in 77ms (Views: 61.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:39:10 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb___782680246_88707540_209192155 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (0.9ms)
+Rendered albums/new.html.erb within layouts/application (57.0ms)
+Completed 200 OK in 127ms (Views: 63.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/prototype.js" for 127.0.0.1 at 2011-01-18 19:39:10 -0200
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.7ms)
+
+
+Started GET "/javascripts/effects.js" for 127.0.0.1 at 2011-01-18 19:39:10 -0200
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.2ms)
+
+
+Started GET "/javascripts/dragdrop.js" for 127.0.0.1 at 2011-01-18 19:39:10 -0200
+
+ActionController::RoutingError (No route matches "/javascripts/dragdrop.js"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.6ms)
+
+
+Started GET "/javascripts/controls.js" for 127.0.0.1 at 2011-01-18 19:39:10 -0200
+
+ActionController::RoutingError (No route matches "/javascripts/controls.js"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.7ms)
+
+
+Started GET "/javascripts/controls.js" for 127.0.0.1 at 2011-01-18 19:39:10 -0200
+
+ActionController::RoutingError (No route matches "/javascripts/controls.js"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.5ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:40:34 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb__26796278_79744780_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (1.0ms)
+Rendered albums/new.html.erb within layouts/application (269.5ms)
+Completed 200 OK in 331ms (Views: 275.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/albums" for 127.0.0.1 at 2011-01-18 19:43:32 -0200
+  Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "album"=>{"name"=>"Album 1", "description"=>"Descrição album 1", "photos_attributes"=>{"1295386839876"=>{"image"=>"eu_ana.JPG"}}}, "commit"=>"Create Album"}
+Completed   in 101ms
+
+CarrierWave::FormNotMultipart (You tried to assign a String or a Pathname to an uploader, for security reasons, this is not allowed.
+
+ If this is a file upload, please check that your upload form is multipart encoded.):
+  app/controllers/albums_controller.rb:43:in `new'
+  app/controllers/albums_controller.rb:43:in `create'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.4ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (56.9ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:44:47 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb__26796278_86481440_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (0.9ms)
+Rendered albums/new.html.erb within layouts/application (61.3ms)
+Completed 200 OK in 87ms (Views: 67.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:44:48 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb__26796278_86848680_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (0.9ms)
+Rendered albums/new.html.erb within layouts/application (72.4ms)
+Completed 200 OK in 102ms (Views: 79.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:44:48 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb__26796278_80797940_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (1.1ms)
+Rendered albums/new.html.erb within layouts/application (112.2ms)
+Completed 200 OK in 136ms (Views: 118.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/albums" for 127.0.0.1 at 2011-01-18 19:44:53 -0200
+  Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "album"=>{"name"=>"Album 1", "description"=>"Descrição album 1", "photos_attributes"=>{"1295387089808"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xa329a74 @original_filename="eu_ana.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295387089808][image]\"; filename=\"eu_ana.JPG\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-4836-nd0wsw>>}}}, "commit"=>"Create Album"}
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `albums`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `albums` (`name`, `description`, `created_at`, `updated_at`) VALUES ('Album 1', 'Descrição album 1', '2011-01-18 21:44:54', '2011-01-18 21:44:54')
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `photos`[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `photos` (`default`, `album_id`, `created_at`, `updated_at`) VALUES (NULL, 1, '2011-01-18 21:44:54', '2011-01-18 21:44:54')
+  [1m[36mSQL (77.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums/1
+Completed 302 Found in 307ms
+
+
+Started GET "/albums/1" for 127.0.0.1 at 2011-01-18 19:44:54 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAlbum Load (0.4ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 1) LIMIT 1
+Rendered albums/show.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 34ms (Views: 16.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/albums/1" for 127.0.0.1 at 2011-01-18 19:46:45 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 1) LIMIT 1[0m
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 1)
+Rendered albums/show.html.erb within layouts/application (76.2ms)
+Completed   in 105ms
+
+ActionView::Template::Error (can't convert nil into String):
+    12: 
+    13: <% for photo in @album.photos %>
+    14: <p>
+    15:   <%= image_tag photo.image.url %>
+    16: </p>
+    17: <% end %>
+    18: 
+  app/views/albums/show.html.erb:15:in `block in _app_views_albums_show_html_erb___688057302_86262170_870791850'
+  app/views/albums/show.html.erb:13:in `_app_views_albums_show_html_erb___688057302_86262170_870791850'
+  app/controllers/albums_controller.rb:18:in `show'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (50.4ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (58.9ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 19:49:01 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.6ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 40ms (Views: 22.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/albums/1" for 127.0.0.1 at 2011-01-18 19:49:03 -0200
+  Processing by AlbumsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "id"=>"1"}
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 1) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 1)
+  [1m[36mAREL (0.3ms)[0m  [1mDELETE FROM `photos` WHERE (`photos`.`id` = 1)[0m
+  [1m[35mAREL (0.3ms)[0m  DELETE FROM `albums` WHERE (`albums`.`id` = 1)
+  [1m[36mSQL (73.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums
+Completed 302 Found in 223ms
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 19:49:04 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.4ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 28ms (Views: 9.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 19:49:05 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb__26796278_87191920_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (1.0ms)
+Rendered albums/new.html.erb within layouts/application (64.2ms)
+Completed 200 OK in 135ms (Views: 70.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/albums" for 127.0.0.1 at 2011-01-18 19:51:29 -0200
+  Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "album"=>{"name"=>"Album 1", "description"=>"teste", "photos_attributes"=>{"1295387346994"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x9e68990 @original_filename="eu_gi.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295387346994][image]\"; filename=\"eu_gi.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-4836-v9xc2t>>}, "1295387348148"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x9e68738 @original_filename="enfarta.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295387348148][image]\"; filename=\"enfarta.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-4836-1r7z10o>>}}}, "commit"=>"Create Album"}
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  describe `albums`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `albums` (`name`, `description`, `created_at`, `updated_at`) VALUES ('Album 1', 'teste', '2011-01-18 21:51:29', '2011-01-18 21:51:29')[0m
+  [1m[35mSQL (0.6ms)[0m  describe `photos`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `photos` (`default`, `album_id`, `created_at`, `updated_at`) VALUES (NULL, 2, '2011-01-18 21:51:29', '2011-01-18 21:51:29')[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `photos` (`default`, `album_id`, `created_at`, `updated_at`) VALUES (NULL, 2, '2011-01-18 21:51:29', '2011-01-18 21:51:29')
+  [1m[36mSQL (75.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums/2
+Completed 302 Found in 214ms
+
+
+Started GET "/albums/2" for 127.0.0.1 at 2011-01-18 19:51:29 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mAlbum Load (0.4ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 2) LIMIT 1
+  [1m[36mPhoto Load (0.8ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 2)[0m
+Rendered albums/show.html.erb within layouts/application (94.8ms)
+Completed   in 119ms
+
+ActionView::Template::Error (can't convert nil into String):
+    12: 
+    13: <% for photo in @album.photos %>
+    14: <p>
+    15:   <%= image_tag photo.image.url %>
+    16: </p>
+    17: <% end %>
+    18: 
+  app/views/albums/show.html.erb:15:in `block in _app_views_albums_show_html_erb___688057302_85361020_870791850'
+  app/views/albums/show.html.erb:13:in `_app_views_albums_show_html_erb___688057302_85361020_870791850'
+  app/controllers/albums_controller.rb:18:in `show'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.8ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.6ms)
+
+
+Started GET "/albums/2" for 127.0.0.1 at 2011-01-18 19:51:50 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 2) LIMIT 1
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 2)[0m
+Rendered albums/show.html.erb within layouts/application (51.0ms)
+Completed 200 OK in 81ms (Views: 58.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/albums/2" for 127.0.0.1 at 2011-01-18 19:52:00 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 2) LIMIT 1
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 2)[0m
+Rendered albums/show.html.erb within layouts/application (57.1ms)
+Completed   in 86ms
+
+ActionView::Template::Error (can't convert Photo into String):
+    12: 
+    13: <% for photo in @album.photos %>
+    14: <p>
+    15:   <%= image_tag photo %>
+    16: </p>
+    17: <% end %>
+    18: 
+  app/views/albums/show.html.erb:15:in `block in _app_views_albums_show_html_erb___688057302_86305790_870791850'
+  app/views/albums/show.html.erb:13:in `_app_views_albums_show_html_erb___688057302_86305790_870791850'
+  app/controllers/albums_controller.rb:18:in `show'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (44.7ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (53.1ms)
+
+
+Started GET "/albums/2" for 127.0.0.1 at 2011-01-18 19:52:06 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 2) LIMIT 1
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 2)[0m
+Rendered albums/show.html.erb within layouts/application (49.0ms)
+Completed 200 OK in 75ms (Views: 55.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/images/" for 127.0.0.1 at 2011-01-18 19:52:06 -0200
+
+ActionController::RoutingError (No route matches "/images"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.6ms)
+
+
+Started GET "/images/" for 127.0.0.1 at 2011-01-18 19:52:06 -0200
+
+ActionController::RoutingError (No route matches "/images"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.4ms)
+
+
+Started GET "/images/" for 127.0.0.1 at 2011-01-18 19:52:06 -0200
+
+ActionController::RoutingError (No route matches "/images"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.5ms)
+
+
+Started GET "/albums/2" for 127.0.0.1 at 2011-01-18 19:52:14 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 2) LIMIT 1
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 2)[0m
+Rendered albums/show.html.erb within layouts/application (48.8ms)
+Completed   in 78ms
+
+ActionView::Template::Error (can't convert ImageUploader into String):
+    12: 
+    13: <% for photo in @album.photos %>
+    14: <p>
+    15:   <%= image_tag photo.image %>
+    16: </p>
+    17: <% end %>
+    18: 
+  app/views/albums/show.html.erb:15:in `block in _app_views_albums_show_html_erb___688057302_86350900_870791850'
+  app/views/albums/show.html.erb:13:in `_app_views_albums_show_html_erb___688057302_86350900_870791850'
+  app/controllers/albums_controller.rb:18:in `show'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.2ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.2ms)
+
+
+Started GET "/albums/2" for 127.0.0.1 at 2011-01-18 19:52:23 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 2) LIMIT 1
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 2)[0m
+Rendered albums/show.html.erb within layouts/application (46.2ms)
+Completed   in 68ms
+
+ActionView::Template::Error (can't convert nil into String):
+    12: 
+    13: <% for photo in @album.photos %>
+    14: <p>
+    15:   <%= image_tag photo.image.to_s %>
+    16: </p>
+    17: <% end %>
+    18: 
+  app/views/albums/show.html.erb:15:in `block in _app_views_albums_show_html_erb___688057302_86507940_870791850'
+  app/views/albums/show.html.erb:13:in `_app_views_albums_show_html_erb___688057302_86507940_870791850'
+  app/controllers/albums_controller.rb:18:in `show'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.1ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.4ms)
+
+
+Started GET "/albums/2" for 127.0.0.1 at 2011-01-18 19:52:24 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 2) LIMIT 1
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 2)[0m
+Rendered albums/show.html.erb within layouts/application (48.9ms)
+Completed   in 72ms
+
+ActionView::Template::Error (can't convert nil into String):
+    12: 
+    13: <% for photo in @album.photos %>
+    14: <p>
+    15:   <%= image_tag photo.image.to_s %>
+    16: </p>
+    17: <% end %>
+    18: 
+  app/views/albums/show.html.erb:15:in `block in _app_views_albums_show_html_erb___688057302_86674250_870791850'
+  app/views/albums/show.html.erb:13:in `_app_views_albums_show_html_erb___688057302_86674250_870791850'
+  app/controllers/albums_controller.rb:18:in `show'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.1ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.9ms)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreatePhotos (20110118210556)
+  [1m[35mSQL (75.4ms)[0m  DROP TABLE `photos`
+  [1m[36mAREL (64.5ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20110118210556'[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `albums`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `albums`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAlbums (20110118205306)
+Migrating to CreatePhotos (20110118210556)
+  [1m[35mSQL (167.2ms)[0m  CREATE TABLE `photos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `default` tinyint(1), `album_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (60.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110118210556')[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `albums`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `albums`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `photos`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `photos`
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:04:22 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.6ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 39ms (Views: 21.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/albums/2" for 127.0.0.1 at 2011-01-18 20:04:27 -0200
+  Processing by AlbumsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "id"=>"2"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 2) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 2)[0m
+  [1m[35mAREL (0.3ms)[0m  DELETE FROM `albums` WHERE (`albums`.`id` = 2)
+  [1m[36mSQL (104.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums
+Completed 302 Found in 228ms
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:04:27 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.5ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 26ms (Views: 10.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 20:04:32 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb__26796278_83571910_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (0.9ms)
+Rendered albums/new.html.erb within layouts/application (108.6ms)
+Completed 200 OK in 136ms (Views: 115.9ms | ActiveRecord: 105.8ms)
+
+
+Started POST "/albums" for 127.0.0.1 at 2011-01-18 20:05:09 -0200
+  Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "album"=>{"name"=>"Album 1", "description"=>"Descrição de Album 1", "photos_attributes"=>{"1295388297759"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xa3ceaec @original_filename="eu_ana.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295388297759][image]\"; filename=\"eu_ana.JPG\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-4836-1tx8h4m>>}, "1295388304510"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xa3ce9d4 @original_filename="eu_gi.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295388304510][image]\"; filename=\"eu_gi.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-4836-dpkib4>>}}}, "commit"=>"Create Album"}
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  describe `albums`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `albums` (`name`, `description`, `created_at`, `updated_at`) VALUES ('Album 1', 'Descrição de Album 1', '2011-01-18 22:05:09', '2011-01-18 22:05:09')[0m
+  [1m[35mSQL (0.7ms)[0m  describe `photos`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `photos` (`default`, `album_id`, `created_at`, `updated_at`) VALUES (NULL, 3, '2011-01-18 22:05:09', '2011-01-18 22:05:09')[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `photos` (`default`, `album_id`, `created_at`, `updated_at`) VALUES (NULL, 3, '2011-01-18 22:05:09', '2011-01-18 22:05:09')
+  [1m[36mSQL (76.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums/3
+Completed 302 Found in 204ms
+
+
+Started GET "/albums/3" for 127.0.0.1 at 2011-01-18 20:05:09 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mAlbum Load (0.4ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 3) LIMIT 1
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 3)[0m
+Rendered albums/show.html.erb within layouts/application (47.1ms)
+Completed   in 73ms
+
+ActionView::Template::Error (can't convert nil into String):
+    12: 
+    13: <% for photo in @album.photos %>
+    14: <p>
+    15:   <%= image_tag photo.image.to_s %>
+    16: </p>
+    17: <% end %>
+    18: 
+  app/views/albums/show.html.erb:15:in `block in _app_views_albums_show_html_erb___688057302_86228750_870791850'
+  app/views/albums/show.html.erb:13:in `_app_views_albums_show_html_erb___688057302_86228750_870791850'
+  app/controllers/albums_controller.rb:18:in `show'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (49.9ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (58.0ms)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreatePhotos (20110118210556)
+  [1m[35mSQL (76.1ms)[0m  DROP TABLE `photos`
+  [1m[36mAREL (58.5ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20110118210556'[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `albums`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `albums`
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAlbums (20110118205306)
+Migrating to CreatePhotos (20110118210556)
+  [1m[35mSQL (158.0ms)[0m  CREATE TABLE `photos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `default` tinyint(1), `album_id` int(11), `image` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (89.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110118210556')[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `albums`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `albums`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `photos`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `photos`
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:08:02 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.6ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 39ms (Views: 22.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/albums/3" for 127.0.0.1 at 2011-01-18 20:08:04 -0200
+  Processing by AlbumsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "id"=>"3"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 3) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 3)[0m
+  [1m[35mAREL (0.3ms)[0m  DELETE FROM `albums` WHERE (`albums`.`id` = 3)
+  [1m[36mSQL (77.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums
+Completed 302 Found in 218ms
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:08:04 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.5ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 27ms (Views: 10.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 20:08:05 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb__26796278_80092790_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (1.0ms)
+Rendered albums/new.html.erb within layouts/application (120.0ms)
+Completed 200 OK in 155ms (Views: 127.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/albums" for 127.0.0.1 at 2011-01-18 20:08:20 -0200
+  Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "album"=>{"name"=>"Album 1", "description"=>"Descrição album 1", "photos_attributes"=>{"1295388493001"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xa2bdd4c @original_filename="eu_ana.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295388493001][image]\"; filename=\"eu_ana.JPG\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-4836-1j9pq8c>>}, "1295388496177"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xa2bdcac @original_filename="enfarta.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295388496177][image]\"; filename=\"enfarta.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-4836-gs95oh>>}}}, "commit"=>"Create Album"}
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  describe `albums`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `albums` (`name`, `description`, `created_at`, `updated_at`) VALUES ('Album 1', 'Descrição album 1', '2011-01-18 22:08:20', '2011-01-18 22:08:20')[0m
+  [1m[35mSQL (0.6ms)[0m  describe `photos`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `photos` (`default`, `album_id`, `image`, `created_at`, `updated_at`) VALUES (NULL, 4, 'eu_ana.jpg', '2011-01-18 22:08:20', '2011-01-18 22:08:20')[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `photos` (`default`, `album_id`, `image`, `created_at`, `updated_at`) VALUES (NULL, 4, 'enfarta.jpg', '2011-01-18 22:08:20', '2011-01-18 22:08:20')
+  [1m[36mSQL (96.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums/4
+Completed 302 Found in 232ms
+
+
+Started GET "/albums/4" for 127.0.0.1 at 2011-01-18 20:08:21 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mAlbum Load (0.4ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)[0m
+Rendered albums/show.html.erb within layouts/application (118.7ms)
+Completed 200 OK in 143ms (Views: 124.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:08:32 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1
+Rendered albums/_form.html.erb (12.1ms)
+Rendered albums/edit.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 42ms (Views: 23.9ms | ActiveRecord: 177.8ms)
+
+
+Started GET "/albums/4" for 127.0.0.1 at 2011-01-18 20:11:13 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)
+Rendered albums/show.html.erb within layouts/application (61.0ms)
+Completed 200 OK in 85ms (Views: 67.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:11:15 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)
+Rendered albums/edit.html.erb within layouts/application (60.2ms)
+Completed   in 133ms
+
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0xa63996c>:0xa62aaac>):
+    5:   <% if @album.photos.empty? %>
+    6:     Sem fotos...
+    7:   <% end %>
+    8:   <% f.fields_for :photos do |builder| %>
+    9:     <div class="field" style="float:left; margin-left:5px;">
+    10:       <% render 'photos', :f => builder %>
+    11:       <br />
+  app/views/albums/edit.html.erb:8:in `_app_views_albums_edit_html_erb___748422253_87117010_870791850'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.3ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.2ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:13:16 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mAlbum Load (1.8ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)[0m
+Rendered albums/edit.html.erb within layouts/application (63.1ms)
+Completed   in 136ms
+
+ActionView::Template::Error (Missing partial albums/photos with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views"):
+    29:     <% end %>
+    30:     <% f.fields_for :photos do |builder| %>
+    31:       <div class="field" style="float:left; margin-left:5px;">
+    32:         <% render 'photos', :f => builder %>
+    33:         <br />
+    34:         <%= link_to_remove_fields "Remover", builder %>
+    35:       </div>
+  app/views/albums/edit.html.erb:32:in `block (2 levels) in _app_views_albums_edit_html_erb___748422253_86408930_870791850'
+  app/views/albums/edit.html.erb:30:in `block in _app_views_albums_edit_html_erb___748422253_86408930_870791850'
+  app/views/albums/edit.html.erb:3:in `_app_views_albums_edit_html_erb___748422253_86408930_870791850'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.4ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.4ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:14:14 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.5ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 89ms (Views: 20.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 20:14:15 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb__26796278_85689030_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (0.9ms)
+Rendered albums/new.html.erb within layouts/application (105.7ms)
+Completed 200 OK in 129ms (Views: 111.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 20:15:02 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb__26796278_86061920_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.html.erb (0.9ms)
+Rendered albums/new.html.erb within layouts/application (63.0ms)
+Completed 200 OK in 91ms (Views: 70.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:15:05 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.3ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 39ms (Views: 23.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:15:06 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)
+Rendered albums/edit.html.erb within layouts/application (105.7ms)
+Completed   in 132ms
+
+ActionView::Template::Error (Missing partial albums/photos with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views"):
+    29:     <% end %>
+    30:     <% f.fields_for :photos do |builder| %>
+    31:       <div class="field" style="float:left; margin-left:5px;">
+    32:         <% render 'photos', :f => builder %>
+    33:         <br />
+    34:         <%= link_to_remove_fields "Remover", builder %>
+    35:       </div>
+  app/views/albums/edit.html.erb:32:in `block (2 levels) in _app_views_albums_edit_html_erb___748422253_80920460_870791850'
+  app/views/albums/edit.html.erb:30:in `block in _app_views_albums_edit_html_erb___748422253_80920460_870791850'
+  app/views/albums/edit.html.erb:3:in `_app_views_albums_edit_html_erb___748422253_80920460_870791850'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.4ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.6ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:18:05 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)[0m
+Rendered albums/edit.html.erb within layouts/application (104.8ms)
+Completed   in 130ms
+
+ActionView::Template::Error (Missing partial albums/photos with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views"):
+    29:     <% end %>
+    30:     <% f.fields_for :photos do |builder| %>
+    31:       <div class="field" style="float:left; margin-left:5px;">
+    32:         <% render 'photos', :f => builder %>
+    33:         <br />
+    34:         <%= link_to_remove_fields "Remover", builder %>
+    35:       </div>
+  app/views/albums/edit.html.erb:32:in `block (2 levels) in _app_views_albums_edit_html_erb___748422253_79712100_870791850'
+  app/views/albums/edit.html.erb:30:in `block in _app_views_albums_edit_html_erb___748422253_79712100_870791850'
+  app/views/albums/edit.html.erb:3:in `_app_views_albums_edit_html_erb___748422253_79712100_870791850'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.7ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.8ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:18:07 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)
+Rendered albums/edit.html.erb within layouts/application (69.9ms)
+Completed   in 146ms
+
+ActionView::Template::Error (Missing partial albums/photos with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views"):
+    29:     <% end %>
+    30:     <% f.fields_for :photos do |builder| %>
+    31:       <div class="field" style="float:left; margin-left:5px;">
+    32:         <% render 'photos', :f => builder %>
+    33:         <br />
+    34:         <%= link_to_remove_fields "Remover", builder %>
+    35:       </div>
+  app/views/albums/edit.html.erb:32:in `block (2 levels) in _app_views_albums_edit_html_erb___748422253_87113960_870791850'
+  app/views/albums/edit.html.erb:30:in `block in _app_views_albums_edit_html_erb___748422253_87113960_870791850'
+  app/views/albums/edit.html.erb:3:in `_app_views_albums_edit_html_erb___748422253_87113960_870791850'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.9ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.2ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:18:30 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)
+Rendered albums/edit.html.erb within layouts/application (64.1ms)
+Completed   in 97ms
+
+ActionView::Template::Error (Missing partial albums/photos with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views"):
+    23:   </div>
+    24: 
+    25:   <% f.fields_for :photos do |builder| %>
+    26:     <% render 'photos', :f => builder %>
+    27:   <% end %>
+    28:   <%= link_to_add_fields "Adicionar", f, :photos %>
+    29: 
+  app/views/albums/edit.html.erb:26:in `block (2 levels) in _app_views_albums_edit_html_erb___748422253_86849520_870791850'
+  app/views/albums/edit.html.erb:25:in `block in _app_views_albums_edit_html_erb___748422253_86849520_870791850'
+  app/views/albums/edit.html.erb:3:in `_app_views_albums_edit_html_erb___748422253_86849520_870791850'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.7ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.9ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:21:54 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)[0m
+Rendered albums/edit.html.erb within layouts/application (67.6ms)
+Completed   in 92ms
+
+ActionView::Template::Error (Missing partial albums/photos with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views"):
+    29:     <% end %>
+    30:     <% f.fields_for :photos do |builder| %>
+    31:       <div class="field" style="float:left; margin-left:5px;">
+    32:         <% render 'photos', :f => builder %>
+    33:         <br />
+    34:         <%= link_to_remove_fields "Remover", builder %>
+    35:       </div>
+  app/views/albums/edit.html.erb:32:in `block (2 levels) in _app_views_albums_edit_html_erb___748422253_86702220_870791850'
+  app/views/albums/edit.html.erb:30:in `block in _app_views_albums_edit_html_erb___748422253_86702220_870791850'
+  app/views/albums/edit.html.erb:3:in `_app_views_albums_edit_html_erb___748422253_86702220_870791850'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.6ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.7ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:21:55 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)
+Rendered albums/edit.html.erb within layouts/application (60.4ms)
+Completed   in 84ms
+
+ActionView::Template::Error (Missing partial albums/photos with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views"):
+    29:     <% end %>
+    30:     <% f.fields_for :photos do |builder| %>
+    31:       <div class="field" style="float:left; margin-left:5px;">
+    32:         <% render 'photos', :f => builder %>
+    33:         <br />
+    34:         <%= link_to_remove_fields "Remover", builder %>
+    35:       </div>
+  app/views/albums/edit.html.erb:32:in `block (2 levels) in _app_views_albums_edit_html_erb___748422253_86511940_870791850'
+  app/views/albums/edit.html.erb:30:in `block in _app_views_albums_edit_html_erb___748422253_86511940_870791850'
+  app/views/albums/edit.html.erb:3:in `_app_views_albums_edit_html_erb___748422253_86511940_870791850'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (48.8ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (57.1ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:21:56 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)[0m
+Rendered albums/edit.html.erb within layouts/application (60.3ms)
+Completed   in 89ms
+
+ActionView::Template::Error (Missing partial albums/photos with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views"):
+    29:     <% end %>
+    30:     <% f.fields_for :photos do |builder| %>
+    31:       <div class="field" style="float:left; margin-left:5px;">
+    32:         <% render 'photos', :f => builder %>
+    33:         <br />
+    34:         <%= link_to_remove_fields "Remover", builder %>
+    35:       </div>
+  app/views/albums/edit.html.erb:32:in `block (2 levels) in _app_views_albums_edit_html_erb___748422253_86381690_870791850'
+  app/views/albums/edit.html.erb:30:in `block in _app_views_albums_edit_html_erb___748422253_86381690_870791850'
+  app/views/albums/edit.html.erb:3:in `_app_views_albums_edit_html_erb___748422253_86381690_870791850'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.6ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.6ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (57.5ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:22:19 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___748422253_86236650_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (67.3ms)
+Completed 200 OK in 93ms (Views: 73.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:23:37 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)[0m
+Rendered albums/edit.html.erb within layouts/application (60.7ms)
+Completed   in 90ms
+
+ActionView::Template::Error (undefined method `small' for /uploads/photo/image/1/eu_ana.jpg:ImageUploader):
+    29:     <% end %>
+    30:     <% f.fields_for :photos do |builder| %>
+    31:       <div class="field" style="float:left; margin-left:5px;">
+    32:         <%= image_tag builder.object.image.small.url %>
+    33:         <br />
+    34:         <%= link_to_remove_fields "Remover", builder %>
+    35:       </div>
+  app/views/albums/edit.html.erb:32:in `block (2 levels) in _app_views_albums_edit_html_erb___748422253_86350530_870791850'
+  app/views/albums/edit.html.erb:30:in `block in _app_views_albums_edit_html_erb___748422253_86350530_870791850'
+  app/views/albums/edit.html.erb:3:in `_app_views_albums_edit_html_erb___748422253_86350530_870791850'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.4ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.8ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.8ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:23:44 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___748422253_86197010_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (72.2ms)
+Completed 200 OK in 102ms (Views: 79.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/albums/4" for 127.0.0.1 at 2011-01-18 20:23:52 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "album"=>{"photos_attributes"=>{"0"=>{"_destroy"=>"1", "id"=>"1"}, "1"=>{"_destroy"=>"false", "id"=>"2"}}}, "commit"=>"Update Album", "id"=>"4"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4) AND (`photos`.`id` IN (1, 2))[0m
+  [1m[35mAREL (0.4ms)[0m  DELETE FROM `photos` WHERE (`photos`.`id` = 1)
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)[0m
+  [1m[35mSQL (48.1ms)[0m  ROLLBACK
+Completed   in 136ms
+
+CarrierWave::FormNotMultipart (You tried to assign a String or a Pathname to an uploader, for security reasons, this is not allowed.
+
+ If this is a file upload, please check that your upload form is multipart encoded.):
+  app/controllers/albums_controller.rb:62:in `block in update'
+  app/controllers/albums_controller.rb:61:in `update'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.9ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.8ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:24:38 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 40ms (Views: 19.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:24:40 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)[0m
+  [1m[35mPhoto Load (0.3ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___748422253_86908730_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (1.2ms)
+Rendered albums/edit.html.erb within layouts/application (80.1ms)
+Completed 200 OK in 150ms (Views: 86.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/uploads/photo/image/1/eu_ana.jpg" for 127.0.0.1 at 2011-01-18 20:24:40 -0200
+
+ActionController::RoutingError (No route matches "/uploads/photo/image/1/eu_ana.jpg"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.9ms)
+
+
+Started GET "/uploads/photo/image/1/eu_ana.jpg" for 127.0.0.1 at 2011-01-18 20:24:40 -0200
+
+ActionController::RoutingError (No route matches "/uploads/photo/image/1/eu_ana.jpg"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.8ms)
+
+
+Started POST "/albums/4" for 127.0.0.1 at 2011-01-18 20:24:45 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "album"=>{"photos_attributes"=>{"0"=>{"_destroy"=>"1", "id"=>"1"}, "1"=>{"_destroy"=>"false", "id"=>"2"}}}, "commit"=>"Update Album", "id"=>"4"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4) AND (`photos`.`id` IN (1, 2))[0m
+  [1m[35mAREL (0.4ms)[0m  DELETE FROM `photos` WHERE (`photos`.`id` = 1)
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)[0m
+  [1m[35mSQL (62.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/albums/4
+Completed 302 Found in 143ms
+
+
+Started GET "/albums/4" for 127.0.0.1 at 2011-01-18 20:24:45 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)
+Rendered albums/show.html.erb within layouts/application (61.9ms)
+Completed 200 OK in 134ms (Views: 67.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:24:46 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___748422253_81049090_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (1.1ms)
+Rendered albums/edit.html.erb within layouts/application (119.7ms)
+Completed 200 OK in 145ms (Views: 125.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/albums/4" for 127.0.0.1 at 2011-01-18 20:24:52 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "album"=>{"photos_attributes"=>{"0"=>{"_destroy"=>"false", "id"=>"2"}, "1295389488550"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xa2b9ee0 @original_filename="eu hawai.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295389488550][image]\"; filename=\"eu hawai.JPG\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-4836-1f1oa7w>>}}}, "commit"=>"Update Album", "id"=>"4"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4) AND (`photos`.`id` IN (2))
+  [1m[36mSQL (1.0ms)[0m  [1mdescribe `photos`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `photos` (`default`, `album_id`, `image`, `created_at`, `updated_at`) VALUES (NULL, 4, 'eu_hawai.jpg', '2011-01-18 22:24:52', '2011-01-18 22:24:52')
+  [1m[36mSQL (54.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums/4
+Completed 302 Found in 198ms
+
+
+Started GET "/albums/4" for 127.0.0.1 at 2011-01-18 20:24:52 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)[0m
+Rendered albums/show.html.erb within layouts/application (124.1ms)
+Completed 200 OK in 150ms (Views: 132.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/albums/4/edit" for 127.0.0.1 at 2011-01-18 20:24:55 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 4)[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___748422253_85888900_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (1.4ms)
+Rendered albums/edit.html.erb within layouts/application (129.3ms)
+Completed 200 OK in 156ms (Views: 134.9ms | ActiveRecord: 64.9ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:25:52 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 38ms (Views: 18.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:42:00 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 36ms (Views: 19.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/albums/4" for 127.0.0.1 at 2011-01-18 20:42:02 -0200
+  Processing by AlbumsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "id"=>"4"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mPhoto Load (0.6ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 4)[0m
+  [1m[35mAREL (0.3ms)[0m  DELETE FROM `photos` WHERE (`photos`.`id` = 2)
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM `photos` WHERE (`photos`.`id` = 3)[0m
+  [1m[35mAREL (0.4ms)[0m  DELETE FROM `albums` WHERE (`albums`.`id` = 4)
+  [1m[36mSQL (64.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums
+Completed 302 Found in 209ms
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:42:02 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.4ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 28ms (Views: 10.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/albums/new" for 127.0.0.1 at 2011-01-18 20:42:03 -0200
+  Processing by AlbumsController#new as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_new_html_erb__26796278_82666780_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/new.html.erb:25)
+Rendered albums/_photo_fields.erb (1.1ms)
+Rendered albums/new.html.erb within layouts/application (114.3ms)
+Completed 200 OK in 142ms (Views: 121.7ms | ActiveRecord: 66.9ms)
+
+
+Started POST "/albums" for 127.0.0.1 at 2011-01-18 20:42:09 -0200
+  Processing by AlbumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "album"=>{"name"=>"teste", "description"=>"teste", "photos_attributes"=>{"1295390526539"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xa32a2a8 @original_filename="eu hawai.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295390526539][image]\"; filename=\"eu hawai.JPG\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-4836-1t87meg>>}}}, "commit"=>"Create Album"}
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  describe `albums`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `albums` (`name`, `description`, `created_at`, `updated_at`) VALUES ('teste', 'teste', '2011-01-18 22:42:09', '2011-01-18 22:42:09')[0m
+  [1m[35mSQL (0.9ms)[0m  describe `photos`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `photos` (`default`, `album_id`, `image`, `created_at`, `updated_at`) VALUES (NULL, 5, 'eu_hawai.jpg', '2011-01-18 22:42:09', '2011-01-18 22:42:09')[0m
+  [1m[35mSQL (86.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/albums/5
+Completed 302 Found in 232ms
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 20:42:10 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.4ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+Rendered albums/show.html.erb within layouts/application (102.0ms)
+Completed 200 OK in 125ms (Views: 107.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:42:15 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.4ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 41ms (Views: 19.5ms | ActiveRecord: 89.4ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 20:45:26 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___748422253_79164240_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (1.1ms)
+Rendered albums/edit.html.erb within layouts/application (73.3ms)
+Completed 200 OK in 145ms (Views: 123.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:45:28 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (65.3ms)
+Completed 200 OK in 90ms (Views: 71.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 20:45:30 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+Rendered albums/show.html.erb within layouts/application (58.4ms)
+Completed 200 OK in 85ms (Views: 64.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:45:36 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 40ms (Views: 19.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 20:45:38 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___748422253_81187100_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (119.7ms)
+Completed 200 OK in 149ms (Views: 126.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:45:40 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 35ms (Views: 18.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 20:45:42 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+Rendered albums/show.html.erb within layouts/application (61.9ms)
+Completed 200 OK in 89ms (Views: 68.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:45:43 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 38ms (Views: 20.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 20:45:45 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___748422253_85350580_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (1.1ms)
+Rendered albums/edit.html.erb within layouts/application (120.2ms)
+Completed 200 OK in 149ms (Views: 127.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 20:45:53 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JXRSCWfI15mxcCL9F+DjCnt/cxswnmCTgatufF7EMnc=", "album"=>{"photos_attributes"=>{"0"=>{"_destroy"=>"false", "id"=>"4"}, "1295390747382"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xa359c60 @original_filename="eu_gi.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295390747382][image]\"; filename=\"eu_gi.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-4836-104nj71>>}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5) AND (`photos`.`id` IN (4))[0m
+  [1m[35mSQL (0.9ms)[0m  describe `photos`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `photos` (`default`, `album_id`, `image`, `created_at`, `updated_at`) VALUES (NULL, 5, 'eu_gi.jpg', '2011-01-18 22:45:53', '2011-01-18 22:45:53')[0m
+  [1m[35mSQL (64.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/albums/5
+Completed 302 Found in 219ms
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 20:45:53 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+Rendered albums/show.html.erb within layouts/application (61.8ms)
+Completed 200 OK in 91ms (Views: 67.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:45:56 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 35ms (Views: 18.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 20:46:00 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___748422253_79876070_870791850 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (1.1ms)
+Rendered albums/edit.html.erb within layouts/application (117.4ms)
+Completed 200 OK in 143ms (Views: 123.0ms | ActiveRecord: 67.1ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:46:03 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (57.7ms)
+Completed 200 OK in 80ms (Views: 63.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:58:16 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 207ms (Views: 21.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/javascripts/jquery-1.4.4.min" for 127.0.0.1 at 2011-01-18 20:58:17 -0200
+
+ActionController::RoutingError (No route matches "/javascripts/jquery-1.4.4.min"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.5ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 20:58:23 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mSQL (0.6ms)[0m  SHOW TABLES
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___528956222_80802430__326506616 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (334.4ms)
+Completed 200 OK in 364ms (Views: 341.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/javascripts/jquery-1.4.4.min" for 127.0.0.1 at 2011-01-18 20:58:23 -0200
+
+ActionController::RoutingError (No route matches "/javascripts/jquery-1.4.4.min"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (5.3ms)
+
+
+Started GET "/uploads/photo/image/4/small_eu_hawai.jpg" for 127.0.0.1 at 2011-01-18 20:58:23 -0200
+
+ActionController::RoutingError (No route matches "/uploads/photo/image/4/small_eu_hawai.jpg"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.8ms)
+
+
+Started GET "/uploads/photo/image/5/small_eu_gi.jpg" for 127.0.0.1 at 2011-01-18 20:58:23 -0200
+
+ActionController::RoutingError (No route matches "/uploads/photo/image/5/small_eu_gi.jpg"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.9ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 20:59:21 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 197ms (Views: 29.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 20:59:25 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mSQL (0.6ms)[0m  SHOW TABLES
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___301910584_79186710_785533117 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (1.1ms)
+Rendered albums/edit.html.erb within layouts/application (307.2ms)
+Completed 200 OK in 337ms (Views: 314.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/uploads/photo/image/5/small_eu_gi.jpg" for 127.0.0.1 at 2011-01-18 20:59:25 -0200
+
+ActionController::RoutingError (No route matches "/uploads/photo/image/5/small_eu_gi.jpg"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.7ms)
+
+
+Started GET "/uploads/photo/image/4/small_eu_hawai.jpg" for 127.0.0.1 at 2011-01-18 20:59:25 -0200
+
+ActionController::RoutingError (No route matches "/uploads/photo/image/4/small_eu_hawai.jpg"):
+  
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.9ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 20:59:32 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"0"=>{"_destroy"=>"1", "id"=>"4"}, "1"=>{"_destroy"=>"1", "id"=>"5"}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5) AND (`photos`.`id` IN (4, 5))
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM `photos` WHERE (`photos`.`id` = 4)[0m
+  [1m[35mPhoto Load (0.4ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM `photos` WHERE (`photos`.`id` = 5)[0m
+  [1m[35mSQL (44.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/albums/5
+Completed 302 Found in 195ms
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 20:59:32 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mPhoto Load (0.4ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+Rendered albums/show.html.erb within layouts/application (49.5ms)
+Completed 200 OK in 75ms (Views: 55.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 20:59:34 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___301910584_82613930_785533117 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (1.0ms)
+Rendered albums/edit.html.erb within layouts/application (69.7ms)
+Completed 200 OK in 140ms (Views: 75.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 20:59:43 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"1295391575578"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x9253574 @original_filename="enfarta.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295391575578][image]\"; filename=\"enfarta.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-8323-i07epx>>}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mROLLBACK[0m
+Completed   in 123ms
+
+NoMethodError (undefined method `scale' for /uploads/tmp/20110118-2059-8323-1118/small_enfarta.jpg:#<Class:0x9d12244>):
+  app/models/photo.rb:8:in `image='
+  app/controllers/albums_controller.rb:62:in `block in update'
+  app/controllers/albums_controller.rb:61:in `update'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (10.8ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.8ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 21:00:43 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 99ms (Views: 78.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:00:44 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___301910584_81672930_785533117 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (73.0ms)
+Completed 200 OK in 103ms (Views: 80.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 21:00:49 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"1295391645993"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x9cc0b88 @original_filename="eu hawai.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295391645993][image]\"; filename=\"eu hawai.JPG\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-8323-1r9ser8>>}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mROLLBACK[0m
+Completed   in 89ms
+
+NoMethodError (undefined method `resize_to_fill' for /uploads/tmp/20110118-2100-8323-2641/small_eu_hawai.jpg:#<Class:0x9b1ab58>):
+  app/models/photo.rb:8:in `image='
+  app/controllers/albums_controller.rb:62:in `block in update'
+  app/controllers/albums_controller.rb:61:in `update'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (56.5ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (65.0ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 21:01:53 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"1295391645993"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x8d00cc0 @original_filename="eu hawai.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295391645993][image]\"; filename=\"eu hawai.JPG\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-8542-14m35vd>>}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+Completed   in 462ms
+
+NoMethodError (undefined method `resize_to_fill' for /uploads/tmp/20110118-2101-8542-6094/small_eu_hawai.jpg:#<Class:0x8fdbc10>):
+  app/models/photo.rb:8:in `image='
+  app/controllers/albums_controller.rb:62:in `block in update'
+  app/controllers/albums_controller.rb:61:in `update'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (10.7ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.5ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 21:01:59 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 34ms (Views: 18.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:02:01 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___277157901_74081800_359905558 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (124.8ms)
+Completed 200 OK in 154ms (Views: 132.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 21:02:05 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"1295391722755"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x8e7b118 @original_filename="eu_gi.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295391722755][image]\"; filename=\"eu_gi.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-8542-19citax>>}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+Completed   in 80ms
+
+NoMethodError (undefined method `resize_to_fill' for /uploads/tmp/20110118-2102-8542-1093/small_eu_gi.jpg:#<Class:0x8977f90>):
+  app/models/photo.rb:8:in `image='
+  app/controllers/albums_controller.rb:62:in `block in update'
+  app/controllers/albums_controller.rb:61:in `update'
+
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (17.0ms)
+Rendered /home/nykolas/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (25.4ms)
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:03:55 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mAlbum Load (0.4ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+Rendered albums/show.html.erb within layouts/application (337.6ms)
+Completed 200 OK in 515ms (Views: 343.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:03:59 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_90629800_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (1.0ms)
+Rendered albums/edit.html.erb within layouts/application (68.7ms)
+Completed 200 OK in 92ms (Views: 74.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 21:04:07 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"1295391841276"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xa713a40 @original_filename="eu hawai.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295391841276][image]\"; filename=\"eu hawai.JPG\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-8670-1qdkoh9>>}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  describe `photos`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `photos` (`default`, `album_id`, `image`, `created_at`, `updated_at`) VALUES (NULL, 5, 'eu_hawai.jpg', '2011-01-18 23:04:07', '2011-01-18 23:04:07')[0m
+  [1m[35mSQL (51.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/albums/5
+Completed 302 Found in 291ms
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:04:07 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mPhoto Load (0.6ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+Rendered albums/show.html.erb within layouts/application (62.1ms)
+Completed 200 OK in 146ms (Views: 71.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:04:10 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_84155380_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (1.5ms)
+Rendered albums/edit.html.erb within layouts/application (119.5ms)
+Completed 200 OK in 144ms (Views: 125.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 21:04:13 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (55.8ms)
+Completed 200 OK in 82ms (Views: 62.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:04:15 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_89716740_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (112.6ms)
+Completed 200 OK in 140ms (Views: 118.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 21:04:47 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 40ms (Views: 19.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:04:48 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+Rendered albums/show.html.erb within layouts/application (61.8ms)
+Completed 200 OK in 87ms (Views: 67.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 21:04:52 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 83ms (Views: 18.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:05:24 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_89256820_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (118.9ms)
+Completed 200 OK in 148ms (Views: 125.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 21:05:30 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"0"=>{"_destroy"=>"1", "id"=>"6"}, "1295391926853"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xaaa585c @original_filename="eu hawai.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295391926853][image]\"; filename=\"eu hawai.JPG\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-8670-1dii6bi>>}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5) AND (`photos`.`id` IN (6))[0m
+  [1m[35mAREL (0.5ms)[0m  DELETE FROM `photos` WHERE (`photos`.`id` = 6)
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mSQL (1.1ms)[0m  describe `photos`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `photos` (`default`, `album_id`, `image`, `created_at`, `updated_at`) VALUES (NULL, 5, 'eu_hawai.jpg', '2011-01-18 23:05:30', '2011-01-18 23:05:30')[0m
+  [1m[35mSQL (75.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/albums/5
+Completed 302 Found in 234ms
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:05:30 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+Rendered albums/show.html.erb within layouts/application (114.8ms)
+Completed 200 OK in 140ms (Views: 120.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:05:35 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_89604720_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (117.2ms)
+Completed 200 OK in 140ms (Views: 122.8ms | ActiveRecord: 79.3ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 21:05:43 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"0"=>{"_destroy"=>"false", "id"=>"7"}, "1295391937581"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xab625c4 @original_filename="eu_ana.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295391937581][image]\"; filename=\"eu_ana.JPG\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-8670-132cqav>>}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mPhoto Load (0.4ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5) AND (`photos`.`id` IN (7))
+  [1m[36mSQL (1.3ms)[0m  [1mdescribe `photos`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `photos` (`default`, `album_id`, `image`, `created_at`, `updated_at`) VALUES (NULL, 5, 'eu_ana.jpg', '2011-01-18 23:05:43', '2011-01-18 23:05:43')
+  [1m[36mSQL (73.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums/5
+Completed 302 Found in 299ms
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:05:43 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+Rendered albums/show.html.erb within layouts/application (62.7ms)
+Completed 200 OK in 89ms (Views: 68.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:05:47 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_90057890_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (1.0ms)
+Rendered albums/edit.html.erb within layouts/application (123.1ms)
+Completed 200 OK in 149ms (Views: 129.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 21:05:53 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 39ms (Views: 18.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:05:56 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+Rendered albums/show.html.erb within layouts/application (65.4ms)
+Completed 200 OK in 133ms (Views: 71.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 21:06:39 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[35mAlbum Load (0.3ms)[0m  SELECT `albums`.* FROM `albums`
+Rendered albums/index.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 94ms (Views: 23.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:06:41 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_89254000_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (138.1ms)
+Completed 200 OK in 168ms (Views: 145.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 21:06:43 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"0"=>{"_destroy"=>"1", "id"=>"7"}, "1"=>{"_destroy"=>"1", "id"=>"8"}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5) AND (`photos`.`id` IN (7, 8))
+  [1m[36mAREL (0.5ms)[0m  [1mDELETE FROM `photos` WHERE (`photos`.`id` = 7)[0m
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+  [1m[36mAREL (0.3ms)[0m  [1mDELETE FROM `photos` WHERE (`photos`.`id` = 8)[0m
+  [1m[35mSQL (68.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/albums/5
+Completed 302 Found in 217ms
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:06:44 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mPhoto Load (2.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+Rendered albums/show.html.erb within layouts/application (97.2ms)
+Completed 200 OK in 126ms (Views: 101.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:06:45 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_89831470_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (68.4ms)
+Completed 200 OK in 143ms (Views: 121.1ms | ActiveRecord: 71.5ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 21:06:50 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"1295392006222"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xabfe03c @original_filename="eu_ana.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295392006222][image]\"; filename=\"eu_ana.JPG\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-8670-1ornn6i>>}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `photos`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `photos` (`default`, `album_id`, `image`, `created_at`, `updated_at`) VALUES (NULL, 5, 'eu_ana.jpg', '2011-01-18 23:06:51', '2011-01-18 23:06:51')
+  [1m[36mSQL (67.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums/5
+Completed 302 Found in 358ms
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:06:51 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+Rendered albums/show.html.erb within layouts/application (67.7ms)
+Completed 200 OK in 92ms (Views: 73.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:06:53 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_90426080_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (1.3ms)
+Rendered albums/edit.html.erb within layouts/application (81.3ms)
+Completed 200 OK in 106ms (Views: 87.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 21:07:08 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"0"=>{"_destroy"=>"false", "id"=>"9"}, "1295392015198"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xac6c3ac @original_filename="Boate0910 039.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295392015198][image]\"; filename=\"Boate0910 039.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-8670-1oavv1h>>}, "1295392023350"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xac6c2f8 @original_filename="madrinha_beto_renato_eu.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295392023350][image]\"; filename=\"madrinha_beto_renato_eu.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-8670-2n8ho6>>}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5) AND (`photos`.`id` IN (9))[0m
+  [1m[35mSQL (0.9ms)[0m  describe `photos`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `photos` (`default`, `album_id`, `image`, `created_at`, `updated_at`) VALUES (NULL, 5, 'boate0910_039.jpg', '2011-01-18 23:07:11', '2011-01-18 23:07:11')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `photos` (`default`, `album_id`, `image`, `created_at`, `updated_at`) VALUES (NULL, 5, 'madrinha_beto_renato_eu.jpg', '2011-01-18 23:07:11', '2011-01-18 23:07:11')
+  [1m[36mSQL (67.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums/5
+Completed 302 Found in 3060ms
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:07:11 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mPhoto Load (0.6ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+Rendered albums/show.html.erb within layouts/application (76.5ms)
+Completed 200 OK in 106ms (Views: 82.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:07:13 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_89858290_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (123.2ms)
+Completed 200 OK in 153ms (Views: 130.3ms | ActiveRecord: 70.4ms)
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:08:01 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+Rendered albums/show.html.erb within layouts/application (110.7ms)
+Completed 200 OK in 140ms (Views: 118.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:08:24 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+Rendered albums/show.html.erb within layouts/application (105.9ms)
+Completed 200 OK in 135ms (Views: 113.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 21:08:33 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 34ms (Views: 18.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:08:37 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.2ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_90291500_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (78.2ms)
+Completed 200 OK in 103ms (Views: 84.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2011-01-18 21:08:46 -0200
+  Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (0.2ms)[0m  [1mSELECT `albums`.* FROM `albums`[0m
+Rendered albums/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 38ms (Views: 20.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:08:55 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_89858540_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:30)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (86.8ms)
+Completed 200 OK in 156ms (Views: 95.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:09:12 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_90544770_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:29)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (75.5ms)
+Completed 200 OK in 99ms (Views: 82.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:09:26 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_90169100_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:29)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (77.1ms)
+Completed 200 OK in 107ms (Views: 84.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 21:22:20 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"0"=>{"_destroy"=>"1", "id"=>"9"}, "1"=>{"_destroy"=>"1", "id"=>"10"}, "2"=>{"_destroy"=>"1", "id"=>"11"}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5) AND (`photos`.`id` IN (9, 10, 11))[0m
+  [1m[35mAREL (0.4ms)[0m  DELETE FROM `photos` WHERE (`photos`.`id` = 9)
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mAREL (0.5ms)[0m  DELETE FROM `photos` WHERE (`photos`.`id` = 10)
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM `photos` WHERE (`photos`.`id` = 11)[0m
+  [1m[35mSQL (84.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/albums/5
+Completed 302 Found in 225ms
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:22:21 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mPhoto Load (0.4ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+Rendered albums/show.html.erb within layouts/application (49.2ms)
+Completed 200 OK in 76ms (Views: 55.0ms | ActiveRecord: 87.7ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:22:24 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_90291630_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:29)
+Rendered albums/_photo_fields.erb (1.4ms)
+Rendered albums/edit.html.erb within layouts/application (79.4ms)
+Completed 200 OK in 105ms (Views: 86.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 21:22:28 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"1295392945507"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0xacb4030 @original_filename="eu hawai.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"album[photos_attributes][1295392945507][image]\"; filename=\"eu hawai.JPG\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20110118-8670-1le5cdh>>}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `photos`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `photos` (`default`, `album_id`, `image`, `created_at`, `updated_at`) VALUES (NULL, 5, 'eu_hawai.jpg', '2011-01-18 23:22:28', '2011-01-18 23:22:28')
+  [1m[36mSQL (56.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/albums/5
+Completed 302 Found in 184ms
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:22:28 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+Rendered albums/show.html.erb within layouts/application (62.2ms)
+Completed 200 OK in 86ms (Views: 68.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/albums/5/edit" for 127.0.0.1 at 2011-01-18 21:22:34 -0200
+  Processing by AlbumsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAlbum Load (0.1ms)[0m  SELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from block in _app_views_albums_edit_html_erb___420415108_90569930_756554300 at /home/nykolas/Desenv/workspaceROR/multipleUploadExample/app/views/albums/edit.html.erb:29)
+Rendered albums/_photo_fields.erb (0.9ms)
+Rendered albums/edit.html.erb within layouts/application (82.5ms)
+Completed 200 OK in 108ms (Views: 88.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/albums/5" for 127.0.0.1 at 2011-01-18 21:22:37 -0200
+  Processing by AlbumsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YGGUnAfvUZXB8jWoOyFG7xfdfXhN2vMtWzS7/DAMHJw=", "album"=>{"photos_attributes"=>{"0"=>{"_destroy"=>"1", "id"=>"12"}}}, "commit"=>"Update Album", "id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5) AND (`photos`.`id` IN (12))[0m
+  [1m[35mAREL (0.5ms)[0m  DELETE FROM `photos` WHERE (`photos`.`id` = 12)
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)[0m
+  [1m[35mSQL (120.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/albums/5
+Completed 302 Found in 211ms
+
+
+Started GET "/albums/5" for 127.0.0.1 at 2011-01-18 21:22:37 -0200
+  Processing by AlbumsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mAlbum Load (0.1ms)[0m  [1mSELECT `albums`.* FROM `albums` WHERE (`albums`.`id` = 5) LIMIT 1[0m
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT `photos`.* FROM `photos` WHERE (`photos`.album_id = 5)
+Rendered albums/show.html.erb within layouts/application (63.2ms)
+Completed 200 OK in 138ms (Views: 70.4ms | ActiveRecord: 0.6ms)
